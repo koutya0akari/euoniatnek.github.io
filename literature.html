@@ -6,6 +6,7 @@
     <title>Literature - My Site</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="site.js" defer></script>
     
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>window.MathJax = { tex: { inlineMath: [['$', '$']] } };</script>
@@ -37,13 +38,31 @@
         .lit-footer {
             margin-top: 5px;
         }
+
+        @media (max-width: 768px) {
+            .main-content { max-width: none; overflow-x: visible; }
+            .literature-grid { gap: 1rem; }
+            .literature-card { padding: 1.25rem; border-radius: 10px; }
+            .lit-title {
+                font-size: 1.1rem;
+                line-height: 1.4;
+            }
+            .lit-memo {
+                padding-top: 1rem;
+                overflow-wrap: anywhere;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
             <div class="profile"><h2>Kenta Inoue</h2><p>@sugakutoprecure</p></div>
-            <nav class="nav-menu">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <i class="fa-solid fa-bars"></i>
+                <span>メニュー</span>
+            </button>
+            <nav class="nav-menu" id="site-nav">
                 <ul>
                     <li><a href="index.html"><i class="fa-solid fa-house"></i> ホーム</a></li>
                     <li><a href="diary.html"><i class="fa-solid fa-book"></i> 日記</a></li>

@@ -6,6 +6,7 @@
     <title>Diary - My Site</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="site.js" defer></script>
     
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>window.MathJax = { tex: { inlineMath: [['$', '$']] } };</script>
@@ -33,6 +34,20 @@
         .breadcrumb { margin-bottom: 20px; color: var(--accent-gray); font-weight: bold; font-size: 0.9rem; min-height: 1.5em; }
         .breadcrumb span { cursor: pointer; }
         .breadcrumb span:hover { color: var(--primary-color); text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .main-content { max-width: none; overflow-x: visible; }
+            .archive-container { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+            .archive-card { padding: 1.25rem; border-radius: 10px; }
+            .monthly-posts-container { gap: 28px; margin-top: 20px; }
+            .diary-post-date { font-size: 1rem; }
+            .diary-body { line-height: 1.75; }
+            .breadcrumb { overflow-wrap: anywhere; }
+        }
+
+        @media (max-width: 420px) {
+            .archive-container { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -40,7 +55,11 @@
     <div class="container">
         <aside class="sidebar">
             <div class="profile"><h2>Kenta Inoue</h2><p>@sugakutoprecure</p></div>
-            <nav class="nav-menu">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <i class="fa-solid fa-bars"></i>
+                <span>メニュー</span>
+            </button>
+            <nav class="nav-menu" id="site-nav">
                 <ul>
                     <li><a href="index.html"><i class="fa-solid fa-house"></i> ホーム</a></li>
                     <li><a href="diary.html" class="active"><i class="fa-solid fa-book"></i> 日記</a></li>
